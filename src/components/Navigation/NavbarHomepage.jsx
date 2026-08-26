@@ -1,29 +1,21 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function NavbarHomepage() {
-  const location = useLocation()
-
-  const getBtnClass = (path, bgColor) => {
-    const isActive = location.pathname === path
-    return `h-20 w-48 text-white font-bold text-xs flex items-center justify-center text-center p-2 rounded-xl transition-all ${bgColor} ${
-      isActive ? "border-4 border-white shadow-lg" : "hover:opacity-90"
-    }`
-  }
-
   return (
-    <nav className="bg-[#e31b40] w-full h-28 flex items-center justify-center gap-4 px-4">
-      <Link to="/" className={getBtnClass("/", "bg-[#0091ff]")}>
-        ini tombol ke / (Home)
+    <div className="bg-red-600 p-4 flex gap-4">
+      <Link to="/" className="bg-blue-500 text-white px-4 py-2 rounded-lg font-bold">
+        Home
       </Link>
-
-      <Link to="/categorizedMenu" className={getBtnClass("/categorizedMenu", "bg-[#4a3b52]")}>
-        ini tombol /categorizedMenu
+      <Link to="/categorizedMenu" className="bg-slate-700 text-white px-4 py-2 rounded-lg font-bold">
+        Categorized Menu
       </Link>
-
-      <Link to="/about" className={getBtnClass("/about", "bg-[#2d7a42]")}>
-        ini tombol ke /about (About Our)
+      <Link to="/cart" className="bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold">
+        Keranjang
       </Link>
-    </nav>
+      <Link to="/login" className="bg-amber-500 text-white px-4 py-2 rounded-lg font-bold">
+        Login
+      </Link>
+    </div>
   )
 }
