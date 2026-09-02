@@ -4,131 +4,83 @@ import { Link, useLocation } from "react-router-dom";
 export default function Sidebar() {
   const location = useLocation();
 
-  // Helper untuk cek route mana yang aktif
-  const isActive = (path) => location.pathname === path;
+  const menuItems = [
+    { name: "Beranda", path: "/", icon: "🏠" },
+    { name: "Menu Resto", path: "/categorizedMenu", icon: "🍔" },
+    { name: "Keranjang", path: "/cart", icon: "🛒" },
+    { name: "Tentang Kami", path: "/about", icon: "ℹ️" },
+    { 
+      name: "Hubungi WA", 
+      path: "https://wa.me/6281514296437?text=Halo%20Admin,%20saya%20mau%20pesan%20menu%20resto.", 
+      icon: "💬", 
+      external: true 
+    },
+    { name: "Pengaturan", path: "/settings", icon: "⚙️" },
+  ];
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 h-full flex flex-col justify-between p-4 min-h-screen">
-      <div className="space-y-6">
-        {/* LOGO RESTO */}
-        <div className="flex items-center gap-3 px-2 py-1">
-          <div className="w-10 h-10 bg-red-600 rounded-2xl flex items-center justify-center text-xl shadow-md text-white font-bold">
-            🍔
-          </div>
-          <span className="text-xl font-black text-slate-800 tracking-tight">
-            Resto<span className="text-red-600">App</span>
-          </span>
+    <div className="flex flex-col h-full bg-white border-r border-slate-200">
+      {/* HEADER SIDEBAR */}
+      <div className="flex items-center gap-3 px-6 py-6 border-b border-slate-100">
+        <div className="bg-red-600 text-white p-2 rounded-xl text-lg font-black shadow">
+          🍔
         </div>
-
-        {/* MENU UTAMA */}
-        <div className="space-y-1">
-          <p className="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-            Menu Utama
-          </p>
-
-          <Link
-            to="/"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all ${
-              isActive("/")
-                ? "bg-blue-50 text-blue-600 font-bold"
-                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-            }`}
-          >
-            <span>🏠</span> Beranda
-          </Link>
-
-          <Link
-            to="/categorizedMenu"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all ${
-              isActive("/categorizedMenu")
-                ? "bg-blue-50 text-blue-600 font-bold"
-                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-            }`}
-          >
-            <span>🍔</span> Menu Resto
-          </Link>
-
-          <Link
-            to="/cart"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all ${
-              isActive("/cart")
-                ? "bg-blue-50 text-blue-600 font-bold"
-                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-            }`}
-          >
-            <span>🛒</span> Keranjang
-          </Link>
-
-          <Link
-            to="/about"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all ${
-              isActive("/about")
-                ? "bg-blue-50 text-blue-600 font-bold"
-                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-            }`}
-          >
-            <span>ℹ️</span> Tentang Kami
-          </Link>
-        </div>
-
-        {/* PESANAN & AKTIVITAS */}
-        <div className="space-y-1">
-          <p className="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-            Aktivitas Saya
-          </p>
-
-          <Link
-            to="/orders"
-            className={`flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all ${
-              isActive("/orders")
-                ? "bg-blue-50 text-blue-600 font-bold"
-                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              <span>📜</span> Riwayat Pesanan
-            </div>
-          </Link>
-
-          <Link
-            to="/favorites"
-            className={`flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all ${
-              isActive("/favorites")
-                ? "bg-blue-50 text-blue-600 font-bold"
-                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              <span>❤️</span> Favorit Saya
-            </div>
-          </Link>
-        </div>
-
-        {/* CARD BANNER PROMO */}
-        <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-4 text-white shadow-lg space-y-2 relative overflow-hidden">
-          <div className="absolute -right-4 -bottom-4 opacity-20 text-7xl font-black">
-            🍔
-          </div>
-          <span className="bg-white/20 text-white text-[10px] font-black px-2.5 py-0.5 rounded-md uppercase tracking-wide">
-            Diskon Member
-          </span>
-          <h4 className="font-extrabold text-lg leading-tight">Gratis Ongkir</h4>
-          <p className="text-xs text-orange-100 leading-relaxed">
-            Khusus pemesanan minimal Rp 50.000 hari ini.
-          </p>
-        </div>
+        <span className="text-xl font-extrabold tracking-tight text-slate-800">
+          Resto<span className="text-red-600">App</span>
+        </span>
       </div>
 
-      {/* FOOTER SIDEBAR (BANTUAN & HAK CIPTA) */}
-      <div className="pt-4 border-t border-slate-100 space-y-3">
-        <button className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 rounded-xl transition-all">
-          <span>🎧</span> Bantuan & CS
-        </button>
+      {/* DAFTAR MENU */}
+      <div className="flex-1 px-3 py-4 space-y-1.5 overflow-y-auto">
+        <p className="px-3 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+          Menu Utama
+        </p>
 
-        <p className="text-[10px] text-center text-slate-400 font-medium">
-          © 2026 RestoApp Inc.
+        {menuItems.map((item, index) => {
+          const isActive = location.pathname === item.path;
+
+          if (item.external) {
+            return (
+              <a
+                key={index}
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3.5 px-3.5 py-3 rounded-2xl font-medium text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 transition group"
+              >
+                <span className="text-xl group-hover:scale-110 transition">{item.icon}</span>
+                <span className="text-sm font-semibold">Hubungi WA</span>
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={index}
+              to={item.path}
+              className={`flex items-center gap-3.5 px-3.5 py-3 rounded-2xl font-medium transition ${
+                isActive
+                  ? "bg-red-50 text-red-600 font-bold shadow-sm"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+              }`}
+            >
+              <span className="text-xl">{item.icon}</span>
+              <span className="text-sm">{item.name}</span>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* BANNER PROMO MEMBER DI BAWAH */}
+      <div className="p-4 m-3 bg-gradient-to-br from-amber-500 to-red-600 rounded-2xl text-white shadow-lg">
+        <p className="text-[10px] font-bold tracking-wider uppercase opacity-90">
+          Diskon Member
+        </p>
+        <h4 className="text-sm font-extrabold mt-0.5">Gratis Ongkir</h4>
+        <p className="text-[11px] opacity-80 mt-1 leading-tight">
+          Min. pesanan Rp 50.000 hari ini.
         </p>
       </div>
-    </aside>
+    </div>
   );
 }

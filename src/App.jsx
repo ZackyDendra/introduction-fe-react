@@ -7,6 +7,7 @@ import AboutPage from "./pages/AboutPage"
 import LoginPage from "./pages/LoginPage"
 import MenuDetailPage from "./pages/MenuDetailPage"
 import CartPage from "./pages/CartPage"
+import PaymentPage from "./pages/PaymentPage"
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/menu/:id" element={<MenuDetailPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
